@@ -21,8 +21,17 @@ def load_and_preprocess(filepath):
         pandas DataFrame with at least columns: 'text', plus any
         preprocessing columns you add (e.g., cleaned text).
     """
-    # TODO: Load the CSV, handle missing values, ensure text column is clean
-    pass
+    df = pd.read_csv(filepath)
+    
+    df = df.dropna(subset=['text'])
+    
+    df['text'] = df['text'].str.strip()
+    
+
+    if 'language' in df.columns:
+        df = df[df['language'] == 'en'].copy()
+        
+    return df
 
 
 def run_ner(texts):
