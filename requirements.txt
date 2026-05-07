@@ -5,3 +5,5 @@ spacy
 pandas
 numpy<2
 pytest
+seaborn
+matplotlib
